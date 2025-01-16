@@ -1,0 +1,15 @@
+{% extends 'manager_app/base.html' %}
+
+{% block content %}
+<div class="header">
+    <h2>Изменить статус заказа</h2>
+</div>
+<div>
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить</button>
+</form>
+<a href="{% url 'home' %}">Назад</a>
+</div>
+{% endblock %}

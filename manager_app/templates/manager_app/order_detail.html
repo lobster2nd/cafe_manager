@@ -1,0 +1,21 @@
+{% extends 'manager_app/base.html' %}
+
+{% block content %}
+<div>
+    <p>Заказ №: {{ order.pk }}</p>
+    <p>Статус: {{ order.get_status_display }}</p>
+    <p>Номер стола: {{ order.table_number }}</p>
+    <p>Заказ:</p>
+            <ul>
+                {% for item in order.items.all %}
+                    <li>{{ item.name }} - {{ item.price }} руб.</li>
+                {% empty %}
+                    <li>Нет заказанных блюд.</li>
+                {% endfor %}
+            </ul>
+            <p>Общая стоимость заказа: {{ order.total_price }}</p>
+    <a href="{% url 'order_edit' order.pk %}">Редактировать статус</a> |
+    <a href="{% url 'order_delete' order.pk %}">Удалить заказ</a>
+</div>
+
+{% endblock %}

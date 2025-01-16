@@ -1,0 +1,30 @@
+{% extends 'manager_app/base.html' %}
+
+<a name="top"></a>
+
+{% block content %}
+<div class="header">
+    <h2>Добро пожаловать в систему. Выберете действие</h2>
+</div>
+<div>
+    <ul>
+    {% for o in orders %}
+        <li>
+            <p>Заказ №: {{ o.pk }}</p>
+            <p>Статус: {{o.get_status_display }}</p>
+            <p>Номер стола: {{ o.table_number }}</p>
+            <p>Заказ:</p>
+            <ul>
+                {% for item in o.items.all %}
+                    <li>{{ item.name }} - {{ item.price }} руб.</li>
+                {% empty %}
+                    <li>Нет заказанных блюд.</li>
+                {% endfor %}
+            </ul>
+            <p>Общая стоимость заказа: {{ o.total_price }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+    <a class="to-top" href="#top">Наверх</a>
+</div>
+{% endblock %}

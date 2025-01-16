@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link type="text/css" href="{% static 'manager_app/css/index.css' %}" rel="stylesheet" />
+</head>
+<body>
+{% block header %}
+<div class="header">
+    <h1>Cистема управления заказами кафе</h1>
+</div>
+{% endblock header %}
+
+{% block buttons %}
+<div class="buttonContainer">
+    {% for m in menu %}
+        <a class="rainbow-button" href="{% url m.url_name %}">{{m.title}}</a>
+    {% endfor %}
+</div>
+<div class="buttonContainer">
+    {% for c in cats %}
+        <button class="button-arounder"><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></button>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block content %}
+{% endblock %}

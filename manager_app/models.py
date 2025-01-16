@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class MenuItem(models.Model):
@@ -10,7 +11,7 @@ class MenuItem(models.Model):
                                 verbose_name="Цена блюда")
 
     def __str__(self):
-        return self.name
+        return f"{self.name}, цена - {self.price}"
 
 
 class Order(models.Model):
@@ -41,5 +42,6 @@ class Order(models.Model):
 
     def __str__(self):
         return (f"Order {self.pk} - Table {self.table_number} - "
-                f"Status: {self.status}")
+                f"Status: {self.status}, Items - {self.items} "
+                f"Total price - {self.total_price}")
 
