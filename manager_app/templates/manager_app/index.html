@@ -3,9 +3,24 @@
 <a name="top"></a>
 
 {% block content %}
-<div class="header">
-    <h2>Добро пожаловать в систему. Выберете действие</h2>
+
+<div align="center">
+    <form method="GET" action="{% url 'home' %}">
+        <label for="table_number">Номер стола:</label>
+        <input type="text" name="table_number" id="table_number" value="{{ request.GET.table_number }}">
+
+        <label for="status">Статус:</label>
+        <select name="status" id="status">
+            <option value="">-- Выберите статус --</option>
+            {% for value, display in orders.model.STATUS_CHOICES %}
+                <option value="{{ value }}" {% if value == request.GET.status %}selected{% endif %}>{{ display }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Поиск</button>
+    </form>
 </div>
+
 <div>
     <ul>
     {% for o in orders %}
@@ -22,6 +37,7 @@
                 {% endfor %}
             </ul>
             <p>Общая стоимость заказа: {{ o.total_price }}</p>
+            <button onclick="location.href='{% url 'order_detail' o.pk %}'">Подробнее</button>
         </li>
     {% endfor %}
     </ul>

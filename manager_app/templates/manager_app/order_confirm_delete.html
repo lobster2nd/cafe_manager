@@ -1,9 +1,7 @@
 {% extends 'manager_app/base.html' %}
 
 {% block content %}
-<div class="header">
-    <h2>Подтверждение удаления заказа</h2>
-</div>
+
 <div>
     <p>Вы уверены, что хотите удалить заказ №{{ object.pk }}?</p>
     <form method="post">

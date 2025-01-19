@@ -1,22 +1,22 @@
 {% extends 'manager_app/base.html' %}
 
 {% block content %}
-<h1>{{title}}</h1>
-<form action="{% url 'add_item' %}" method="post" enctype="multipart/form-data">
 
-    {% csrf_token %}
+<div>
+    <form action="{% url 'add_item' %}" method="post" enctype="multipart/form-data">
 
-    <div class="form_error">{{ form.non_field_errors }}</div>
+        {% csrf_token %}
 
-    {% for f in form %}
-            <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</p>
-    <div class="form-error">{{ f.errors }}</div>
-    {% endfor %}
+        <div class="form_error">{{ form.non_field_errors }}</div>
+
+        {% for f in form %}
+                <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</p>
+        <div class="form-error">{{ f.errors }}</div>
+        {% endfor %}
 
 
-    <button type="submit">Добавить</button>
-
-</form>
-
+        <button type="submit">Добавить</button>
+    </form>
+</div>
 
 {% endblock %}

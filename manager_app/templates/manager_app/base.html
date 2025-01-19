@@ -15,9 +15,10 @@
 
 {% block buttons %}
 <div class="buttonContainer">
-    {% for m in menu %}
-        <a class="rainbow-button" href="{% url m.url_name %}">{{m.title}}</a>
-    {% endfor %}
+    <a class="rainbow-button" href="{% url 'home' %}">Список заказов</a>
+    <a class="rainbow-button" href="{% url 'add_order' %}">Добавить заказ</a>
+    <a class="rainbow-button" href="{% url 'add_item' %}">Добавить пункт меню</a>
+    <a class="rainbow-button" href="{% url 'total_revenue' %}">Выручка</a>
 </div>
 <div class="buttonContainer">
     {% for c in cats %}

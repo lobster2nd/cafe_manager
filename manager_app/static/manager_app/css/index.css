@@ -20,7 +20,7 @@ html {
 }
 body {
     font-family: 'Lora', serif;
-    color: white
+    color: white;
 }
 .buttonContainer {
   display: flex;
@@ -218,12 +218,6 @@ a {
 }
 .to-top:hover:before{
 	transform: rotate(360deg);
-}
-.img-article-left {
-	max-width: 300px;
-	height: auto;
-	float: left;
-	padding: 0 10px 10px 0;
 }
 .form-label {
     display: inline-block;
