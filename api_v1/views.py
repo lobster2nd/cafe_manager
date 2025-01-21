@@ -55,8 +55,9 @@ class OrderViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin,
         """
 
         table_number = request.data.get("table_number")
-
-        if not isinstance(table_number, int):
+        try:
+            table_number = int(table_number)
+        except ValueError as e:
             return Response({"error": "Недопустимое значение"},
                             status=HTTP_400_BAD_REQUEST)
 
@@ -70,11 +71,14 @@ class OrderViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin,
                 menu_item = (MenuItem.objects
                              .filter(id=int(item_id))
                              .first())
+
                 if not menu_item:
                     return Response(
                         {
                             "detail": f"Пункт меню № {item_id} не найден."},
                         status=HTTP_404_NOT_FOUND)
+
+                order.items.add(menu_item)
 
         serializer = self.get_serializer(order)
         return Response(serializer.data, status=HTTP_201_CREATED)
