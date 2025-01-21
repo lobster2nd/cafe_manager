@@ -16,10 +16,6 @@ logs-web:
 logs-db:
 	docker compose logs -f db
 
-logs-bot:
-	docker compose logs -f bot
-
-
 console-web:
 	docker exec -it django_app sh
 

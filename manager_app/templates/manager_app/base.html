@@ -29,3 +29,32 @@
 
 {% block content %}
 {% endblock %}
+
+{% if page_obj.has_other_pages %}
+<nav>
+    <ul>
+        {% if page_obj.has_previous %}
+            <li class="nav_button">
+                <a href="?page={{ page_obj.previous_page_number }}">&lt</a>
+            </li>
+        {% endif %}
+        {% for p in paginator.page_range %}
+        {% if page_obj.number == p %}
+        <li class="nav_button">{{ p }}</li>
+        {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+        <li class="nav_button">
+            <a href="?page={{ p }}">{{ p }}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <li class="nav_button">
+                <a href="?page={{ page_obj.next_page_number }}">&gt</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+<script src="{% static 'examinations/js/index.js' %}"></script>
+</body>
+</html>

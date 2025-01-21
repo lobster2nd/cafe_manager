@@ -12,6 +12,7 @@ class OrderListView(ListView):
     model = Order
     template_name = "manager_app/index.html"
     context_object_name = "orders"
+    paginate_by = 3
 
     def get_queryset(self):
         """Метод фильтрации для поиска по номеру стола и статусу"""
