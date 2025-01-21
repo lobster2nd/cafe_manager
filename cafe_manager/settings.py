@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4wuz83t^w+!5*wq*&jf)s+k*t1@epotiop0$7xp(r)qv8=k=t0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'drf_yasg',
 
     'manager_app',
+    'api_v1',
 ]
 
 MIDDLEWARE = [
@@ -80,18 +81,18 @@ WSGI_APPLICATION = 'cafe_manager.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': '5432',
-    }
     # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'postgres',
+    #     'USER': 'postgres',
+    #     'PASSWORD': 'postgres',
+    #     'HOST': 'db',
+    #     'PORT': '5432',
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
